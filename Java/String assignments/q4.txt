@@ -1,0 +1,63 @@
+Ways to Initialize a String in Java
+
+There are mainly two ways to initialize a String:
+
+1. Using String Literals
+String s1 = "Hello";
+String s2 = "Hello";   // refers to the same object as s1
+
+
+When you create a String using literals, Java stores it in a special memory area called the String Constant Pool (SCP) (inside the heap).
+
+If another literal with the same value is created, it reuses the existing object instead of creating a new one.
+
+This saves memory.
+
+2. Using new Keyword
+String s3 = new String("Hello");
+String s4 = new String("Hello");
+
+
+Here, a new object is always created in the heap memory, even if the same content exists in the String Pool.
+
+So s3 and s4 are different objects.
+
+Role of String Literal Pool (SCP)
+
+String Pool is a special memory area in the Java Heap that stores String literals.
+
+Purpose: To save memory and improve performance by reusing immutable String objects.
+
+When you write:
+
+String a = "Java";
+String b = "Java";
+
+
+Only one object ("Java") is created in the pool.
+
+Both a and b will point to the same object.
+
+a == b → true (same reference).
+
+Quick Example
+public class Test {
+    public static void main(String[] args) {
+        String s1 = "Hello";              // goes to SCP
+        String s2 = "Hello";              // reused from SCP
+        String s3 = new String("Hello");  // new object in heap
+
+        System.out.println(s1 == s2);     // true (same pool object)
+        System.out.println(s1 == s3);     // false (heap vs pool)
+        System.out.println(s1.equals(s3)); // true (same content)
+    }
+}
+
+
+✅ In short:
+
+String literals go to String Pool and are reused.
+
+new keyword always creates a new object in heap (not reused).
+
+String Pool helps in memory optimization because Strings are immutable.

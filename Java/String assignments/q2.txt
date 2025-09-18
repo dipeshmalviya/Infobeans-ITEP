@@ -1,0 +1,42 @@
+Difference between String, StringBuffer, and StringBuilder
+Feature	String (Immutable)	StringBuffer (Mutable, Thread-safe)	StringBuilder (Mutable, Not Thread-safe)
+Mutability	Immutable (cannot change once created)	Mutable (can be changed)	Mutable (can be changed)
+Thread Safety	Safe (because immutable)	Thread-safe (synchronized methods)	Not thread-safe (faster, no synchronization)
+Performance	Slower in modifications (creates new object each time)	Slower than StringBuilder (because of synchronization)	Faster than StringBuffer
+Use Case	When data won’t change frequently (e.g., constants, keys)	When multiple threads are modifying same string	When single thread modifies string a lot
+Examples
+1. String (Immutable)
+public class Test {
+    public static void main(String[] args) {
+        String s = "Hello";
+        s.concat(" World");
+        System.out.println(s);  // Output: Hello (new object created, but s unchanged)
+    }
+}
+
+2. StringBuffer (Mutable + Thread-safe)
+public class Test {
+    public static void main(String[] args) {
+        StringBuffer sb = new StringBuffer("Hello");
+        sb.append(" World");
+        System.out.println(sb);  // Output: Hello World
+    }
+}
+
+3. StringBuilder (Mutable + Faster)
+public class Test {
+    public static void main(String[] args) {
+        StringBuilder sb = new StringBuilder("Hello");
+        sb.append(" World");
+        System.out.println(sb);  // Output: Hello World
+    }
+}
+
+
+✅ In short:
+
+String → Immutable, safe, but slow in modifications.
+
+StringBuffer → Mutable, thread-safe, slower.
+
+StringBuilder → Mutable, not thread-safe, but faster.

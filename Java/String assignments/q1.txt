@@ -1,0 +1,41 @@
+1) What is String in Java?
+
+In Java, String is a class that represents a sequence of characters.
+
+Strings are stored as objects in Java (not as primitive data types).
+
+Example:
+
+String name = "Hello";
+
+2) Mutability and Immutability
+
+Immutability → Once an object is created, it cannot be changed.
+
+In Java, String objects are immutable.
+
+Example:
+
+String s = "Hello";
+s.concat(" World");
+System.out.println(s);  // Output: Hello (not Hello World)
+
+
+👉 A new String "Hello World" is created in memory, but s still refers to "Hello".
+
+Mutability → An object whose value can be changed after creation.
+
+In Java, StringBuffer and StringBuilder are mutable (can be modified).
+
+Example:
+
+StringBuilder sb = new StringBuilder("Hello");
+sb.append(" World");
+System.out.println(sb);  // Output: Hello World
+
+
+✅ In short:
+
+String → immutable (cannot be changed once created).
+
+StringBuilder/StringBuffer → mutable (can be modified).

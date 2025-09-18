@@ -1,0 +1,351 @@
+Object - oriented
+1) What is Object oriented? Write down difference b/w Object oriented and procedure oriented programming approach.
+
+2)What is class and object? Explain all oop features in java with example.
+
+3)What are the role of setter and getter method ? What is POJO In Java.
+
+4)How to update and retrive  the value of a particular property of an object from anothor class(Let suppose the property is private) ?
+
+5) Create an Object having two properties and four behaviours
+(add,substract,multiply,divide) to perform desired operation.object must have setter and getter and keep all properties private.
+
+6)What is Constructor? List down the keypoints about constructor.
+
+7)Can we make multiple contructor inside a class? if yes then what is the need of it.Explain,
+
+8) Private constuctor is legal or illegal ?
+
+9) What is Singleton class explain with suitable example?
+
+10)What is method overloading ? What are importance of method overloading ? Can we overload the main method in java ?
+
+11) How to pass as many argument to java method?
+12) Can we overload the method with var-arg type of argument.
+
+
+
+
+
+## **1) What is Object-Oriented? Difference between OOP and POP**
+
+* **Object-Oriented Programming (OOP):**
+
+  * A programming paradigm based on the concept of **objects** (real-world entities).
+  * An object contains **data (properties/fields/attributes)** and **behaviors (methods/functions)**.
+  * The focus is on **modeling real-world problems** using objects.
+
+* **Procedure-Oriented Programming (POP):**
+
+  * A paradigm where the focus is on **functions/procedures**.
+  * Data and methods are treated separately.
+  * Example: **C language**.
+
+| Aspect            | OOP                                     | POP                        |
+| ----------------- | --------------------------------------- | -------------------------- |
+| Focus             | Data + Methods (together in objects)    | Functions (procedures)     |
+| Security          | High (data hiding via access modifiers) | Low (data shared globally) |
+| Reusability       | Achieved via inheritance, polymorphism  | Code duplication is common |
+| Example Languages | Java, C++, Python                       | C, Pascal                  |
+
+---
+
+## **2) What is Class and Object? OOP Features in Java**
+
+* **Class** → A blueprint/template for creating objects. It defines variables (properties) and methods (behaviors).
+* **Object** → A real-world instance created from a class.
+
+🔹 Example:
+
+```java
+class Car {
+    String color;
+    int speed;
+
+    void drive() {
+        System.out.println("Car is driving at speed: " + speed);
+    }
+}
+
+public class Test {
+    public static void main(String[] args) {
+        Car obj = new Car();   // Object creation
+        obj.color = "Red";
+        obj.speed = 100;
+        obj.drive();
+    }
+}
+```
+
+### **OOP Features in Java**
+
+1. **Encapsulation** → Binding data + methods together. (using private + getters/setters).
+2. **Abstraction** → Hiding implementation, showing only functionality (using abstract class/interface).
+3. **Inheritance** → One class acquires properties/behaviors of another (`extends` keyword).
+4. **Polymorphism** → One entity, many forms.
+
+   * Compile-time: **Method Overloading**.
+   * Runtime: **Method Overriding**.
+
+---
+
+## **3) Role of Setter and Getter. What is POJO?**
+
+* **Getter** → Used to **retrieve** the value of private fields.
+* **Setter** → Used to **update/modify** the value of private fields.
+
+🔹 Example:
+
+```java
+class Student {
+    private String name;
+
+    public void setName(String name) {  // setter
+        this.name = name;
+    }
+    public String getName() {           // getter
+        return name;
+    }
+}
+```
+
+* **POJO (Plain Old Java Object)**:
+  A simple Java object having only private properties with **public getters/setters**.
+
+  * No business logic.
+  * No special restrictions (like inheritance).
+  * Widely used in **Hibernate, Spring, JSON/XML serialization**.
+
+---
+
+## **4) Update & Retrieve Private Property from Another Class**
+
+Since the property is **private**, we must use **getters/setters**.
+
+```java
+class Employee {
+    private int salary;
+
+    public void setSalary(int salary) {
+        this.salary = salary;
+    }
+    public int getSalary() {
+        return salary;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Employee e = new Employee();
+        e.setSalary(50000);  // updating
+        System.out.println("Salary: " + e.getSalary()); // retrieving
+    }
+}
+```
+
+---
+
+## **5) Object with Two Properties and Four Behaviors**
+
+```java
+class Calculator {
+    private int a;
+    private int b;
+
+    // setters
+    public void setA(int a) { this.a = a; }
+    public void setB(int b) { this.b = b; }
+
+    // getters
+    public int getA() { return a; }
+    public int getB() { return b; }
+
+    // behaviors
+    public int add() { return a + b; }
+    public int subtract() { return a - b; }
+    public int multiply() { return a * b; }
+    public int divide() { return a / b; }
+}
+
+public class TestCalc {
+    public static void main(String[] args) {
+        Calculator c = new Calculator();
+        c.setA(20);
+        c.setB(10);
+        System.out.println("Add: " + c.add());
+        System.out.println("Sub: " + c.subtract());
+        System.out.println("Mul: " + c.multiply());
+        System.out.println("Div: " + c.divide());
+    }
+}
+```
+
+---
+
+## **6) What is Constructor? Key Points**
+
+* **Constructor**: A special method used to **initialize objects**.
+* Same name as the class.
+* No return type (not even `void`).
+* Called **automatically** when an object is created.
+
+**Key Points:**
+
+1. If no constructor is defined, Java provides a **default constructor**.
+2. Can be **overloaded** (multiple constructors allowed).
+3. Cannot be **inherited**, but can be called by child using `super()`.
+4. Cannot be `static`, `abstract`, or `final`.
+
+---
+
+## **7) Multiple Constructors (Constructor Overloading)**
+
+Yes ✅ we can have multiple constructors → called **Constructor Overloading**.
+
+**Need:**
+
+* To create objects in different ways (flexibility).
+
+Example:
+
+```java
+class Student {
+    String name;
+    int age;
+
+    Student() {
+        System.out.println("Default constructor");
+    }
+    Student(String name) {
+        this.name = name;
+    }
+    Student(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+}
+```
+
+---
+
+## **8) Private Constructor – Legal or Illegal?**
+
+* ✅ **Legal** in Java.
+* Used to **restrict object creation** outside the class.
+* Mostly used in **Singleton Design Pattern**.
+
+---
+
+## **9) Singleton Class**
+
+* A class that allows **only one object** to be created throughout the JVM.
+* Achieved by:
+
+  1. Making constructor **private**.
+  2. Having a **static instance**.
+  3. Providing a **public static method** to get the object.
+
+Example:
+
+```java
+class Singleton {
+    private static Singleton instance;
+    private Singleton() {}   // private constructor
+
+    public static Singleton getInstance() {
+        if (instance == null) {
+            instance = new Singleton(); 
+        }
+        return instance;
+    }
+}
+
+public class Test {
+    public static void main(String[] args) {
+        Singleton obj1 = Singleton.getInstance();
+        Singleton obj2 = Singleton.getInstance();
+        System.out.println(obj1 == obj2); // true (same object)
+    }
+}
+```
+
+---
+
+## **10) Method Overloading**
+
+* Defining **multiple methods** with the same name but different **parameter list**.
+* **Importance:**
+
+  * Improves readability.
+  * Provides flexibility (same name, different use).
+* Yes ✅ we can overload the `main()` method, but **JVM only calls `public static void main(String[] args)`**.
+
+Example:
+
+```java
+class Demo {
+    void show(int a) { System.out.println("int: " + a); }
+    void show(String s) { System.out.println("String: " + s); }
+
+    public static void main(String[] args) {
+        Demo d = new Demo();
+        d.show(10);
+        d.show("Hello");
+
+        Demo.main("Overloaded"); // calling overloaded main
+    }
+
+    public static void main(String arg) {
+        System.out.println("Overloaded main called");
+    }
+}
+```
+
+---
+
+## **11) Pass Many Arguments to Java Method**
+
+We use **Var-args (Variable Arguments)** with `...` syntax.
+
+```java
+class Demo {
+    void printNumbers(int... nums) {
+        for (int n : nums) {
+            System.out.print(n + " ");
+        }
+    }
+
+    public static void main(String[] args) {
+        Demo d = new Demo();
+        d.printNumbers(1, 2, 3, 4, 5);
+    }
+}
+```
+
+---
+
+## **12) Can We Overload Methods with Var-args?**
+
+✅ Yes, we can overload methods using var-args.
+But rules:
+
+1. Only **one var-arg parameter** is allowed in a method.
+2. If there is both a **specific parameter method** and a **var-arg method**, **Java prefers the specific one**.
+
+Example:
+
+```java
+class Test {
+    void show(int a) {
+        System.out.println("One int: " + a);
+    }
+    void show(int... a) {
+        System.out.println("Var-args method called");
+    }
+
+    public static void main(String[] args) {
+        Test t = new Test();
+        t.show(5);        // calls specific method
+        t.show(1,2,3,4);  // calls var-args method
+    }
+}

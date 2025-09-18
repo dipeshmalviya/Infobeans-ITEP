@@ -1,0 +1,28 @@
+Difference between == Operator and equals() Method in Java
+Aspect	== Operator	equals() Method
+Type	Operator	Method of Object class (overridden in String class)
+Compares	Compares references (memory addresses)	Compares content/values
+Return	true if both references point to the same object	true if both objects have the same sequence of characters
+Usage	Checks if two variables point to the same object	Checks if two objects have equal content
+Examples
+public class Test {
+    public static void main(String[] args) {
+        String s1 = new String("Hello");
+        String s2 = new String("Hello");
+        String s3 = s1;
+
+        // Using ==
+        System.out.println(s1 == s2);  // false (different objects in memory)
+        System.out.println(s1 == s3);  // true (same reference)
+
+        // Using equals()
+        System.out.println(s1.equals(s2));  // true (content is same: "Hello")
+    }
+}
+
+
+✅ In short:
+
+== → checks if both references point to the same object (memory location).
+
+equals() → checks if both objects have the same content.
