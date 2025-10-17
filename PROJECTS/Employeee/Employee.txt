@@ -1,0 +1,11 @@
+[35,36,38]-bg font
+Microsoft janghai UI Light bold 
+36 heading font Microsoft new tai lau  fcolr->[226,226,226]
+heading bg->[39,49,66]
+
+
+ Color clr=new Color(0,0,0);
+        panelhome.setBackground(clr);
+
+ Color clr=new Color(153,153,153);
+        panelhome.setBackground(clr);
